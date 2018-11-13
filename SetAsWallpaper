@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Set As Wallpaper
+rm -rf ~/.cache/SetAsWallpaper/*
+sleep 1
+gsettings set org.gnome.desktop.background picture-uri file:///`pwd`/$1
+# Copy selected file to temp folder "~/.cache/SetAsWallpaper"
+while [ $# -gt 0 ]; do
+    echo "$# file(s)/folder(s) left to duplicate."
+    ORIGINALITEM="$1"    
+    DUPLICATEITEM="${ORIGINALITEM} (copy)"
+    cp -r "$ORIGINALITEM" "$DUPLICATEITEM" ~/.cache/SetAsWallpaper
+    shift
+done
+# Make your wallpaper blurry
+sleep 2
+pkexec convert -blur 0x50 ~/.cache/SetAsWallpaper/* /usr/share/backgrounds/gdmlock.jpg
+# Enjoy!
