@@ -6,6 +6,6 @@ sudo chmod +x install.sh
 
 ./install.sh
 
-./set-login-background.sh
+./set-login-background.sh $LOCAL_PATH/login-background.jpg
 
 
